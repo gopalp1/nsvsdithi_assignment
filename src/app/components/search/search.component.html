@@ -1,0 +1,26 @@
+<div class="search-box">
+    <mat-icon (click)="goBack();">arrow_back</mat-icon>
+    <h1 style="text-align: center;">Search box</h1>
+
+    <input type="text" class="search" name="search" [(ngModel)]="searchText" (input)="searchData()"
+        placeholder="Search..">
+    <mat-card style="margin: 50px 0">
+        <mat-card *ngIf="filteredData.length">
+            <ul *ngFor="let filter of filteredData">
+                <li (click)="select(filter)"><span><b>Label</b>: </span>{{filter?.label}} -- <span><b>Type</b>:
+                    </span>{{filter?.type}}</li>
+            </ul>
+        </mat-card>
+        <h3 *ngIf="!filteredData.length && !selectedData.length" style="text-align: center;">No data found...!</h3>
+        <mat-card *ngIf="selectedData.length" style="text-align: center;">
+            <div *ngFor="let select of selectedData">
+                <h4>Search results : </h4>
+                <h4> KEY : <span>{{select?.key}}</span></h4>
+                <h4> TYPE : <span>{{select?.type}}</span></h4>
+                <h4>ORDER<span>{{select?.order}}</span></h4>
+                <h4>REQUIRED : <span>{{select?.isRequired}}</span></h4>
+                <h4>READONLY : <span>{{select?.isReadonly}}</span></h4>
+            </div>
+        </mat-card>
+    </mat-card>
+</div>

@@ -3,17 +3,22 @@
     <mat-card class="form-card">
         <form [formGroup]="projectForm">
             <div *ngFor="let form of data?.fields">
-                <mat-form-field appearance="outline" class="example-full-width">
+                <mat-form-field appearance="outline" class="example-full-width"  *ngIf="form?.type != 'date'">
                     <mat-label>{{form?.label}}</mat-label>
-                    <input matInput *ngIf="form?.type != 'dropdown'"  type="{{form?.type}}" formControlName="{{form?.key}}" >
-
+                    <input matInput *ngIf="form?.type != 'dropdown' && form?.type != 'date'"  type="{{form?.type}}" formControlName="{{form?.key}}">
                     <mat-select formControlName="{{form?.key}}" *ngIf="form?.type === 'dropdown'">
                         <mat-option  *ngFor="let option of form?.items" value="{{option?.value}}">{{option?.text}}</mat-option >
                     </mat-select>
-
                     <span style="margin-right:15px" matSuffix>{{ form?.unit }}  </span>
                   </mat-form-field>
 
+                  <mat-form-field appearance="outline" class="example-full-width"  *ngIf="form?.type == 'date'">
+                    <mat-label>{{form?.label}}</mat-label>
+                      <input matInput [matDatepicker]="dp2">
+                      <mat-datepicker-toggle matIconSuffix [for]="dp2" [displayFormat]="'YYYY/mm/DD'" ></mat-datepicker-toggle>
+                      <mat-datepicker #dp2></mat-datepicker>
+                    <span style="margin-right:15px" matSuffix>{{ form?.unit }}  </span>
+                  </mat-form-field>
             </div> 
             <div style= "float:right">
                 <button mat-raised-button color="primary" (click)="submit()" [disabled]="!projectForm.valid">Submit</button>

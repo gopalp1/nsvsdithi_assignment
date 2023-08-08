@@ -23,7 +23,7 @@ export class FormComponent implements OnInit {
       if (resp.isRequired) {
         validationsArray.push(Validators.required);
       }
-      controls[resp.key] = new FormControl(resp.key, validationsArray)
+      controls[resp.key] = new FormControl({value:resp.key,disabled:resp.isReadonly}, validationsArray)
     });
     this.projectForm = this.formBuilder.group(controls);
   }

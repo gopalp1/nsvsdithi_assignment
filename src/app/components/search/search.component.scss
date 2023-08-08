@@ -1,0 +1,27 @@
+.search-box{
+    width:60%;
+    margin: auto;
+    height: 100%;
+    padding: 10px;   
+}
+.search {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    // background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+
+  }
+  h3{
+    margin: 0 !important;
+    padding: 5px;
+  }
+
+  mat-icon {
+    cursor: pointer;
+  }
