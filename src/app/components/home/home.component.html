@@ -1,0 +1,14 @@
+<div class="container">
+    <mat-form-field>
+        <mat-label>Select Form</mat-label>
+        <mat-select (selectionChange)="onChange($event)">
+          <mat-option value="drug1">Drug1</mat-option>
+          <mat-option value="drug2">Drug2</mat-option>
+        </mat-select>
+      </mat-form-field>      
+<app-form [data]="list"></app-form>
+</div>
+
+
+
+
