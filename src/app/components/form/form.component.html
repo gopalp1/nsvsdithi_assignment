@@ -5,11 +5,13 @@
             <div *ngFor="let form of data?.fields">
                 <mat-form-field appearance="outline" class="example-full-width">
                     <mat-label>{{form?.label}}</mat-label>
-                    <input matInput *ngIf="form?.type != 'dropdown'"  type="{{form?.type}}" formControlName="{{form?.key}}">
+                    <input matInput *ngIf="form?.type != 'dropdown'"  type="{{form?.type}}" formControlName="{{form?.key}}" >
 
                     <mat-select formControlName="{{form?.key}}" *ngIf="form?.type === 'dropdown'">
                         <mat-option  *ngFor="let option of form?.items" value="{{option?.value}}">{{option?.text}}</mat-option >
                     </mat-select>
+
+                    <span style="margin-right:15px" matSuffix>{{ form?.unit }}  </span>
                   </mat-form-field>
 
             </div> 
